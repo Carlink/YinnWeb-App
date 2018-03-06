@@ -1,0 +1,36 @@
+body {
+    font-family: "Arial";
+}
+
+h1,h2,p {
+    text-align: center;
+}
+
+hr,table {
+    width: 80%;
+}
+
+table {
+	margin-left: auto;
+    margin-right: auto;
+}
+th {
+	background-color: #8e8e8e;
+}
+
+td {
+	background-color: #cecece;
+}
+
+p {
+	margin: 0 10% 0 10%;
+}
+.qrDiv {
+	margin: 0 20% 0 20%;
+	height: 200px;
+}
+img {
+	display: block;
+	margin: auto;
+	height: 100%;
+}

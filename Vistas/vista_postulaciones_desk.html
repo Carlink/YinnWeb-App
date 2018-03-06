@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" /> 
+		<title>VueJs Test</title>
+		<link rel="stylesheet" type="text/css" href="css/vue-material.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	<body>
+		<div id="app">
+			<app-nav></app-nav>
+			<app-view>
+				<app-sidebar></app-sidebar>
+				<app-content></app-content>
+			</app-view>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-material.js"></script>
+		<script>
+			Vue.use(VueMaterial)
+			
+			var App = new Vue({
+				el: '#app'
+			})
+		</script>
+	</body>
+</html>
+<!-- 
+Reajustar tiempos de Trello y adsignar responsables a las tarjetas
+-->

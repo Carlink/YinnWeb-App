@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="24px" viewBox="0 0 16 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_power_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Dispositivos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-29.000000, -173.000000)">
+        <g id="Group-5" transform="translate(0.000000, 162.000000)">
+            <g id="ic_power_24px" transform="translate(21.000000, 7.000000)">
+                <path d="M21.3466667,9.33333333 L21.3333333,4 L18.6666667,4 L18.6666667,9.33333333 L13.3333333,9.33333333 L13.3333333,4 L10.6666667,4 L10.6666667,9.33333333 L10.6533333,9.33333333 C9.33333333,9.32 8,10.6533333 8,11.9866667 L8,19.3066667 L12.6666667,24 L12.6666667,28 L19.3333333,28 L19.3333333,24 L24,19.32 L24,11.9866667 C24,10.6533333 22.6666667,9.32 21.3466667,9.33333333 Z" id="Shape" fill="#373737" fill-rule="nonzero"></path>
+                <polygon id="Shape" points="0 0 32 0 32 32 0 32"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

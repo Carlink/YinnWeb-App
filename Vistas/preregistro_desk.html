@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" /> 
+		<title>Pre registro trabajo en digital</title>
+		<link rel="stylesheet" type="text/css" href="css/vue-material.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	<body>
+		<div id="app">
+			<!--md-toolbar>
+				<h1 class="md-title">My Title</h1>
+			</md-toolbar-->
+			
+				<md-layout md-gutter>
+					<md-layout md-column md-vertical-align="center">
+						<md-layout md-flex="40"></md-layout>
+						<md-layout>
+							<form novalidate>
+								<md-input-container>
+									<md-input placeholder="Nombre completo"></md-input>
+								</md-input-container>
+								<md-input-container>
+									<md-input placeholder="Correo electrónico"></md-input>
+								</md-input-container>
+								<md-layout>
+									<md-button-toggle md-single class="md-primary">
+										<md-button class="md-toggle">Profesionista</md-button>
+										<md-button>Empresa</md-button>
+									</md-button-toggle>
+								</md-layout>
+								<!--md-input-container>
+									<md-autocomplete placeholder="Área de interés" v-model="autocompleteValue" :list="areas" v-on:selected="seleccionado"></md-input>
+								</md-input-container-->
+								<md-input-container>
+									<label for="movie">Área principal de trabajo</label>
+									<md-select name="area" id="area" v-model="texto">
+										<li v-for="item in areas">
+											<md-option :value="item">{{item}}</md-option>
+										</li>
+									</md-select>
+								</md-input-container>
+								<md-layout md-align="center">
+									<md-button href="#" class="md-raised md-primary">Registro</md-button>
+								</md-layout>
+							</form>
+						</md-layout>
+					</md-layout>
+					<!--p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, rerum? Error sunt, aperiam dolores, atque expedita molestiae tenetur. Quis eveniet accusamus velit explicabo adipisci reiciendis modi eaque quas, officia excepturi.</p-->
+				</md-layout>
+			
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-material.js"></script>
+		<script>
+			Vue.use(VueMaterial)
+			
+			var App = new Vue({
+				el: '#app',
+				data: {
+					texto: 'Seleccione el área',
+					areas: [
+						"Programación",
+						"Diseño web",
+						"Fotografía",
+						"Impresión 3D",
+						"Administración",
+						"Instrumentalización",
+						"Desarrollo Web",
+						"Programación",
+						"Ingeniería de Software",
+						"Base de datos"
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 
+Reajustar tiempos de Trello y adsignar responsables a las tarjetas
+-->
