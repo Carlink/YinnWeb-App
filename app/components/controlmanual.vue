@@ -1,11 +1,14 @@
 <template>
-	<span>
+	<span class="grey lighten-2">
 		<v-list subheader>
           <v-subheader class="grey lighten-2">ACTIVABLES</v-subheader>
-            <span v-for="item in activadores">
+          	<v-list-tile class="white" v-if="!activadores[0].visible && !activadores[1].visible">
+          		Sin Dispositivos Activables Conectados
+          	</v-list-tile>
+            <span class="white" v-for="item in activadores" v-if="item.visible">
 				<v-divider></v-divider>
 				
-	            <v-list-tile avatar v-bind:key="item.title" @click="activadores_metodo(item)">
+	            <v-list-tile class="white" avatar v-bind:key="item.title" @click="activadores_metodo(item)">
 	              <v-list-tile-avatar class="mr-2">
 	                <img :src="item.value ? item.icon : item.alt"/>
 	              </v-list-tile-avatar>
@@ -26,8 +29,13 @@
 
 	            
 			</span>
-
-            <v-subheader class="grey lighten-2">SENSORES INTERNOS</v-subheader>
+			
+			<v-subheader class="grey lighten-2">SENSORES INTERNOS</v-subheader>
+			<v-list-tile v-if="!dispositivos_activos[0].activo">
+				Sin Sensores Internos Conectados
+			</v-list-tile>
+			<span v-if="dispositivos_activos[0].activo">
+            
 			
 			<span v-for="item in sensores_internos">
 				<v-divider></v-divider>
@@ -44,7 +52,13 @@
 	            </v-list-tile>	            
 			</span>
 
-			<v-subheader class="grey lighten-2">SENSORES EXTERNOS</v-subheader>
+			</span>
+			
+			<v-subheader class="grey lighten-2" >SENSORES DE EXTERIOR</v-subheader>
+			<v-list-tile v-if="!dispositivos_activos[1].activo">
+				Sin Sensores de Exterior Conectados
+			</v-list-tile>
+			<span v-if="dispositivos_activos[1].activo">
 			
 			<span v-for="item in sensores_externos" >
 				<v-divider></v-divider>
@@ -60,6 +74,7 @@
 	              <span>{{item.value}} {{item.unidad}}</span>
 	            </v-list-tile>	            
 			</span>
+			</span>
 
             
         </v-list>
@@ -73,19 +88,24 @@ import firebase from '~/utils/firebase/firebase.js';
     data () {
 	    return {
 	      activadores: [
-	        { title: 'Ventilador', dispositivo: 'Yinn Connect', icon: 'iconos/dispositivos/ventilador_on.svg', alt: 'iconos/dispositivos/ventilador_off.svg' , value: null},
-	        { title: 'Bombilla', dispositivo: 'Yinn Light', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null}
+	        { title: 'Ventilador', dispositivo: 'Yinn Connect', icon: 'iconos/dispositivos/ventilador_on.svg', alt: 'iconos/dispositivos/ventilador_off.svg' , value: null, visible: false},
+	        { title: 'Bombilla', dispositivo: 'Yinn Light', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null, visible: false}
 	      ],
 	      sensores_internos: [	        
 	        { title: 'Temperatura', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: ' °C'},
-	        { title: 'Luminicidad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: 'lm'},
-	        { title: 'Movimiento', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/bombillo.svg' , value: null, unidad: ''},
+	        { title: 'Humedad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: '%'},
+	        { title: 'Luminicidad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: 'lm'}
+	        
 	      ],
 	      sensores_externos: [
 	        { title: 'Temperatura Externa', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/temperatura_externa.svg' , value: null, unidad: ' °C'},
 	        { title: 'Luminocidad Externa', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: ' lm'},
 	        { title: 'Movimiento', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/bombillo.svg' , value: null},
 	        { title: 'Lluvia', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/lluvia.svg' , value: null},
+	      ],
+	      dispositivos_activos: [
+	      	{ dispositivo: 'Yinn Sense', activo: false},
+	      	{ dispositivo: 'Yinn Weather', activo: false},
 	      ]
 	    }
 	  },
@@ -101,8 +121,8 @@ import firebase from '~/utils/firebase/firebase.js';
 	  	firebase.database().ref('dispositivos/cliente-1/sensores_internos').on('value', (snapshot)=>{
 	  		let c = snapshot.exportVal();
 	  		me.sensores_internos[0].value = c.temperatura;
-	  		me.sensores_internos[1].value = c.luminosidad;
-	  		me.sensores_internos[2].value = c.movimiento;
+	  		me.sensores_internos[1].value = c.humedad;
+	  		me.sensores_internos[2].value = c.luminosidad;
 	  	});
 
 	  	firebase.database().ref('dispositivos/cliente-1/sensores_externos').on('value', (snapshot)=>{
@@ -111,6 +131,14 @@ import firebase from '~/utils/firebase/firebase.js';
 	  		me.sensores_externos[1].value = c.luminosidad;
 	  		me.sensores_externos[2].value = c.movimiento;
 	  		me.sensores_externos[3].value = c.lluvia;
+	  	});
+
+	  	firebase.database().ref('dispositivos/cliente-1/dispositivos_activos').on('value', (snapshot)=>{
+	  		let c = snapshot.exportVal();
+	  		me.activadores[0].visible = c.YinnConnect;
+	  		me.activadores[1].visible = c.YinnLight;
+	  		me.dispositivos_activos[0].activo = c.YinnSense;
+	  		me.dispositivos_activos[1].activo = c.YinnWeather;
 	  	});
 
 	  },

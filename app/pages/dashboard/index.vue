@@ -1,4 +1,4 @@
-q<template>
+<template>
 	<span>
 		<v-layout column>
 			<v-layout justify-center
@@ -7,10 +7,19 @@ q<template>
       		</v-layout>
 
       		<manual
-			style="overflow: scroll; height: 72vh;"
+      			v-show="vista=='dashboard'"
+				style="overflow: scroll; height: 72vh;"
       		></manual>
+      		<rutinas
+      			v-show="vista=='directions'"
+				style="overflow: scroll; height: 72vh;"
+      		></rutinas>
+      		<dispositivos
+      			v-show="vista=='devices'"
+				style="overflow: scroll; height: 72vh;"
+      		></dispositivos>
 
-			<v-bottom-nav absolute :value="true" :active.sync="e1" color="transparent">
+			<v-bottom-nav absolute :shift="true" :value="true" :active.sync="vista" color="transparent">
 		      <v-btn flat color="amber" value="dashboard">
 		        <span>DASHBOARD</span>
 		        <v-icon>dashboard</v-icon>
@@ -23,10 +32,10 @@ q<template>
 		        <span>DISPOSITIVOS</span>
 		        <v-icon>device_hub</v-icon>
 		      </v-btn>
-		      <v-btn flat color="amber" value="seetings">
+		      <!-- <v-btn flat color="amber" value="seetings">
 		        <span>AJUSTES</span>
 		        <v-icon>settings</v-icon>
-		      </v-btn>
+		      </v-btn> -->
 		    </v-bottom-nav>
 		</v-layout>
 	</span>
@@ -34,15 +43,19 @@ q<template>
 
 <script>
 	import manual from '~/components/controlmanual.vue';
+	import rutinas from '~/components/rutinas.vue';
+	import dispositivos from '~/components/dispositivos.vue';
 
 	export default{
 		layout: 'yinn',
 		components: {
-			manual
+			manual,
+			rutinas,
+			dispositivos
 		},
 		data () {
 	      return {
-	        e1: 'recent'
+	        vista: 'dashboard'
 	      }
 	    }
 	};	
