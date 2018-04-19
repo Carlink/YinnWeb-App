@@ -26,7 +26,7 @@ module.exports = {
 			{src: '/scripts/FlowType.JS-master/flowtype.js', type: 'text/javascript'},
 			{src: '/scripts/blockly_compressed.js', type: 'text/javascript'},
 			{src: '/scripts/blocks_compressed.js', type: 'text/javascript'},
-			{src: '/scripts/msg/js/en.js', type: 'text/javascript'},			
+			{src: '/scripts/msg/js/es.js', type: 'text/javascript'},			
 			{
 				src: 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js',
 				type: 'text/javascript'

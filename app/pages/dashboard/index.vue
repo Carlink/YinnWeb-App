@@ -55,7 +55,7 @@
 		},
 		data () {
 	      return {
-	        vista: 'dashboard'
+	        vista: 'directions'
 	      }
 	    }
 	};	
