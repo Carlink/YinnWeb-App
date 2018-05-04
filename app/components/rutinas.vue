@@ -14,13 +14,6 @@
     	</v-snackbar>
 
 		<xml style="display: none;" ref="toolbox">
-			<!-- <category name="Control"> -->
-				<!-- <block type="controls_repeat_ext"></block> -->
-				<!-- <block type="math_arithmetic"></block> -->				
-			<!-- </category> -->
-			<category name="CONTROL">
-				<block type="controls_if"></block>
-			</category>
 			<category name="LOGICA">
 				<block type="controls_if"></block>
 			    <block type="logic_compare"></block>
@@ -104,6 +97,7 @@
 	</span>
 </template>
 
+
 <script>
 import firebase from '~/utils/firebase/firebase.js';
 
@@ -116,19 +110,44 @@ import firebase from '~/utils/firebase/firebase.js';
 	    		snack_codigo_enviado: false
 	    	}
 	    },
+	    head () {
+			return {
+				script: [
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blockly_compressed.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks_compressed.js'},
+
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/logic.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/loops.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/math.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/text.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/lists.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/colour.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/variables.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/procedures.js'},
+
+		      		{ type: 'text/javascript', src: 'scripts/blockly/msg/js/es.js'},
+		    	],
+		    }
+		},
 		methods: {
 			verCodigo: function(){
-				this.snack_codigo_enviado = true;
-				// Blockly.JavaScript.addReservedWords('code');
-				var code = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
+				
+
+				Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      			var code = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
+
+				alert(code);
 				
 				let obj = {
 					nuevo: true,
 					activo: true,
-					code: 'console.log("Si funciona el envio de funciones");'
+					code: code
 				}
 
 				firebase.database().ref('dispositivos/cliente-1/rutinas').push(obj);
+
+				this.snack_codigo_enviado = true;
 			}
 		},
 		mounted(){

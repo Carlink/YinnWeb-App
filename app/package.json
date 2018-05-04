@@ -1,8 +1,8 @@
 {
-	"name": "trabajo-en-digital-web",
+	"name": "yinn-web",
 	"version": "1.0.0",
 	"description": "Web App para TrabajoEnDigital.com",
-	"author": "David Barrera <davo.barrera@gmail.com>",
+	"author": "Carlos Castro <carliianoide@gmail.com>",
 	"private": true,
 	"dependencies": {
 		"@nuxtjs/sitemap": "0.0.3",
