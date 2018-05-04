@@ -1,18 +1,22 @@
 <template>
 	<span>
-		Rutinas
-		<div id="blocklyDiv" style="height: 100%; width: 100%; position: relative;" ref="toolbox">		
+		<div id="blocklyDiv" style="height: 90%; width: 100%; position: relative;" ref="toolbox">		
 		</div>
+		
+		<v-btn color="primary" dark @click="verCodigo()">ver codigo</v-btn>
+
+		<v-snackbar
+	        :timeout="2000"
+	      	color="primary"
+	      	v-model="snack_codigo_enviado">
+			Código enviado 
+			<v-btn dark flat @click.native="snack_codigo_enviado = false">Cerrar</v-btn>
+    	</v-snackbar>
 
 		<xml style="display: none;" ref="toolbox">
 			<!-- <category name="Control"> -->
-				
 				<!-- <block type="controls_repeat_ext"></block> -->
-				<!-- <block type="math_arithmetic"></block> -->
-				
-				
-				
-				
+				<!-- <block type="math_arithmetic"></block> -->				
 			<!-- </category> -->
 			<category name="CONTROL">
 				<block type="controls_if"></block>
@@ -101,12 +105,36 @@
 </template>
 
 <script>
+import firebase from '~/utils/firebase/firebase.js';
+
+
 
 	export default{
+		data () {
+	    	return {
+	    		workspacePlayground: null,
+	    		snack_codigo_enviado: false
+	    	}
+	    },
+		methods: {
+			verCodigo: function(){
+				this.snack_codigo_enviado = true;
+				// Blockly.JavaScript.addReservedWords('code');
+				var code = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
+				
+				let obj = {
+					nuevo: true,
+					activo: true,
+					code: 'console.log("Si funciona el envio de funciones");'
+				}
+
+				firebase.database().ref('dispositivos/cliente-1/rutinas').push(obj);
+			}
+		},
 		mounted(){
 
 			//Aqui creamos el workspace
-			var workspacePlayground = Blockly.inject('blocklyDiv',
+			this.workspacePlayground = Blockly.inject('blocklyDiv',
       			{
       			toolbox: this.$refs.toolbox,
 				grid:{
@@ -120,7 +148,7 @@
       			);
 
 			//Aqui mandamos llamar el codigo generado
-			//var code = Blockly.JavaScript.workspaceToCode(workspace);
+			//var code = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
 
 		}
 	}

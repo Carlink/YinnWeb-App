@@ -24,9 +24,9 @@ module.exports = {
 		script: [
 			{src: '//code.jquery.com/jquery-latest.min.js', type: 'text/javascript'},
 			{src: '/scripts/FlowType.JS-master/flowtype.js', type: 'text/javascript'},
-			{src: '/scripts/blockly_compressed.js', type: 'text/javascript'},
-			{src: '/scripts/javascript_compressed.js', type: 'text/javascript'},
+			{src: '/scripts/blockly_compressed.js', type: 'text/javascript'},			
 			{src: '/scripts/blocks_compressed.js', type: 'text/javascript'},
+			{src: '/scripts/javascript_compressed.js', type: 'text/javascript'},
 			{src: '/scripts/msg/js/es.js', type: 'text/javascript'},						
 			{
 				src: 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js',

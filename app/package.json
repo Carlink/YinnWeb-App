@@ -52,7 +52,7 @@
 		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
 		"precommit": "npm run lint",
 		"deploy": "gcloud app deploy app.yaml --project Yinn --version produccion",
-		"deploy-test": "gcloud app deploy app.yaml --project Yinn --no-promote --version prueba"
+		"deploy-test": "gcloud app deploy app.yaml --project Yinn --no-promote --version prueb2"
 	},
 	"devDependencies": {
 		"eslint": "3.19.0",
