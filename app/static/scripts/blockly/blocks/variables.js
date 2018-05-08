@@ -81,6 +81,30 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_VARIABLES_SET_TOOLTIP}",
     "helpUrl": "%{BKY_VARIABLES_SET_HELPURL}",
     "extensions": ["contextMenu_variableSetterGetter"]
+  }, 
+  {
+    "type": "yinn_light_switch",
+    "message0": "YinnLight  %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "switch",
+        "options": [
+          [
+            "encendido",
+            "true"
+          ],
+          [
+            "apagado",
+            "false"
+          ]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "colour": 0,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 

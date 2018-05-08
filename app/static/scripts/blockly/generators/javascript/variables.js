@@ -44,3 +44,10 @@ Blockly.JavaScript['variables_set'] = function(block) {
       block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   return varName + ' = ' + argument0 + ';\n';
 };
+
+Blockly.JavaScript['yinn_light_switch'] = function(block) {
+  var dropdown_switch = block.getFieldValue('switch');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'yinnlightswitch(' + dropdown_switch + ')';
+  return code;
+};

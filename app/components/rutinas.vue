@@ -88,7 +88,7 @@
 				<block type="text_print"></block>
 			</category>
 			<category name="SWITCHES">
-				
+				<block type="yinn_light_switch"></block>	
 			</category>
 			<category name="SENSORES">
 				
@@ -114,7 +114,6 @@ import firebase from '~/utils/firebase/firebase.js';
 			return {
 				script: [
 		      		{ type: 'text/javascript', src: 'scripts/blockly/blockly_compressed.js'},
-		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks_compressed.js'},
 
 		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript.js'},
 		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/logic.js'},
@@ -125,6 +124,17 @@ import firebase from '~/utils/firebase/firebase.js';
 		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/colour.js'},
 		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/variables.js'},
 		      		{ type: 'text/javascript', src: 'scripts/blockly/generators/javascript/procedures.js'},
+
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/logic.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/loops.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/math.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/text.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/lists.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/colour.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/variables.js'},
+		      		{ type: 'text/javascript', src: 'scripts/blockly/blocks/procedures.js'},
+
+
 
 		      		{ type: 'text/javascript', src: 'scripts/blockly/msg/js/es.js'},
 		    	],
