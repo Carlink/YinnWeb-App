@@ -105,6 +105,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "colour": 0,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "yinn_sense_temp",
+    "message0": "Temperatura Interior",
+    "output": null,
+    "colour": 0,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "yinn_sense_lum",
+    "message0": "Luminosidad Interior",
+    "output": null,
+    "colour": 0,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 

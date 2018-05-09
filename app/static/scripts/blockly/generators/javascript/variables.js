@@ -51,3 +51,18 @@ Blockly.JavaScript['yinn_light_switch'] = function(block) {
   var code = 'yinnlightswitch(' + dropdown_switch + ')';
   return code;
 };
+
+Blockly.JavaScript['yinn_sense_temp'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['temperaturaInterna'];
+};
+
+Blockly.JavaScript['yinn_sense_lum'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['luminosidadInterna'];
+};
+

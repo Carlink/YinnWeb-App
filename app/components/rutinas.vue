@@ -91,7 +91,8 @@
 				<block type="yinn_light_switch"></block>	
 			</category>
 			<category name="SENSORES">
-				
+				<block type="yinn_sense_temp"></block>
+				<block type="yinn_sense_lum"></block>				
 			</category>
 		</xml>
 	</span>
