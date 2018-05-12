@@ -10,14 +10,20 @@
       			v-show="vista=='dashboard'"
 				style="overflow: scroll; height: 72vh;"
       		></manual>
-      		<rutinas
+      		<!-- <rutinas
       			v-show="vista=='directions'"
 				style="overflow: scroll; height: 72vh;"
-      		></rutinas>
+      		></rutinas> -->
+      		<lista
+      			v-show="vista=='directions'"
+				style="height: 72vh;"
+			>      			
+      		</lista>
       		<dispositivos
       			v-show="vista=='devices'"
 				style="overflow: scroll; height: 72vh;"
       		></dispositivos>
+      		
 
 			<v-bottom-nav absolute :shift="true" :value="true" :active.sync="vista" color="transparent">
 		      <v-btn flat color="amber" value="dashboard">
@@ -45,13 +51,15 @@
 	import manual from '~/components/controlmanual.vue';
 	import rutinas from '~/components/rutinas.vue';
 	import dispositivos from '~/components/dispositivos.vue';
+	import lista from '~/components/lista_rutinas.vue';
 
 	export default{
 		layout: 'yinn',
 		components: {
 			manual,
 			rutinas,
-			dispositivos
+			dispositivos,
+			lista
 		},
 		data () {
 	      return {
