@@ -11,8 +11,9 @@
 				style="overflow: scroll; height: 72vh;"
       		></manual>
       		<!-- <rutinas
-      			v-show="vista=='directions'"
-				style="overflow: scroll; height: 72vh;"
+      			@vista="onVista"
+      			v-show="vista=='directions' && interior=='rutinas'"
+				style="height: 72vh;"
       		></rutinas> -->
       		<lista
       			v-show="vista=='directions'"
@@ -65,6 +66,11 @@
 	      return {
 	        vista: 'directions'
 	      }
+	    },
+	    methods: {
+	    	onVista (value) {
+		      window.location.replace('/rutina/' + id);
+		    }
 	    }
 	};	
 </script>
