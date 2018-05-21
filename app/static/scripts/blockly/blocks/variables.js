@@ -84,7 +84,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   }, 
   {
     "type": "yinn_light_switch",
-    "message0": "YinnLight  %1",
+    "message0": "Lámpara  %1",
     "args0": [
       {
         "type": "field_dropdown",
@@ -102,15 +102,42 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "previousStatement": null,
-    "colour": 0,
+    "nextStatement": null,
+    "colour": 60,
     "tooltip": "",
     "helpUrl": ""
   },
   {
+    "type": "yinn_connect_switch",
+    "message0": "Switch  %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "switch",
+        "options": [
+          [
+            "encendido",
+            "true"
+          ],
+          [
+            "apagado",
+            "false"
+          ]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 60,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+
+  {
     "type": "yinn_sense_temp",
     "message0": "Temperatura Interior",
     "output": null,
-    "colour": 0,
+    "colour": 120,
     "tooltip": "",
     "helpUrl": ""
   },
@@ -118,10 +145,67 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "type": "yinn_sense_lum",
     "message0": "Luminosidad Interior",
     "output": null,
-    "colour": 0,
+    "colour": 120,
     "tooltip": "",
     "helpUrl": ""
-  }
+  },
+  {
+    "type": "yinn_sense_hum",
+    "message0": "Humedad Interior",
+    "output": null,
+    "colour": 120,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "yinn_sense_mov",
+    "message0": "Movimiento Interior",
+    "output": null,
+    "colour": 120,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "yinn_weather_temp",
+    "message0": "Temperatura Exterior",
+    "output": null,
+    "colour": 300,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "yinn_weather_hum",
+    "message0": "Humedad Exterior",
+    "output": null,
+    "colour": 300,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "yinn_weather_lum",
+    "message0": "Iluminación Exterior",
+    "output": null,
+    "colour": 300,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "yinn_weather_mov",
+    "message0": "Movimiento Exterior",
+    "output": null,
+    "colour": 300,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "yinn_weather_lluv",
+    "message0": "Lluvia",
+    "output": null,
+    "colour": 300,
+    "tooltip": "",
+    "helpUrl": ""
+  },
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 
 /**

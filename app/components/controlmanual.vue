@@ -14,7 +14,7 @@
 	              </v-list-tile-avatar>
 	              <v-list-tile-content>
 	                <v-list-tile-title>
-	                {{item.title}}
+	                {{item.dispositivo}}
 	            	</v-list-tile-title>
 	              </v-list-tile-content>
 	              
@@ -88,13 +88,14 @@ import firebase from '~/utils/firebase/firebase.js';
     data () {
 	    return {
 	      activadores: [
-	        { title: 'Ventilador', dispositivo: 'Yinn Connect', icon: 'iconos/dispositivos/ventilador_on.svg', alt: 'iconos/dispositivos/ventilador_off.svg' , value: null, visible: false},
-	        { title: 'Bombilla', dispositivo: 'Yinn Light', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null, visible: false}
+	        { title: 'Ventilador', dispositivo: 'Lámpara', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null, visible: false},
+	        { title: 'Bombilla', dispositivo: 'Switch', icon: 'iconos/dispositivos/switch_on.svg', alt: 'iconos/dispositivos/switch_off.svg' , value: null, visible: false}
 	      ],
 	      sensores_internos: [	        
 	        { title: 'Temperatura', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: ' °C'},
-	        { title: 'Humedad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: '%'},
-	        { title: 'Luminicidad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: 'lm'}
+	        { title: 'Humedad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/humedad.svg' , value: null, unidad: '%'},
+	        { title: 'Luminicidad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: 'lm'},
+	        { title: 'Movimiento', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: ''}
 	        
 	      ],
 	      sensores_externos: [
@@ -123,6 +124,7 @@ import firebase from '~/utils/firebase/firebase.js';
 	  		me.sensores_internos[0].value = c.temperatura;
 	  		me.sensores_internos[1].value = c.humedad;
 	  		me.sensores_internos[2].value = c.luminosidad;
+	  		me.sensores_internos[3].value = (c.movimiento == 0 ? 'Sin movimiento' : 'Hay movimiento!!');
 	  	});
 
 	  	firebase.database().ref('dispositivos/cliente-1/sensores_externos').on('value', (snapshot)=>{

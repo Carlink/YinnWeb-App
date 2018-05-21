@@ -23,7 +23,7 @@
 	      </v-btn>
 
 	     <v-btn
-			style="margin-left: 160px; margin-top: 50px;"
+			style="margin-left: 210px; margin-top: 50px;"
 	        raised
 	        absolute
 	        left			
@@ -192,10 +192,10 @@
 			    <block type="logic_operation"></block>
 			    <block type="logic_negate"></block>
 			    <block type="logic_boolean"></block>
-			    <block type="logic_null"></block>
-			    <block type="logic_ternary"></block>
+			    <!-- <block type="logic_null"></block> -->
+			    <!-- <block type="logic_ternary"></block> -->
 			</category>
-			<category name="TIEMPO">
+			<!-- <category name="TIEMPO">
 				<block type="controls_repeat_ext">
 			        <value name="TIMES">
 			          <shadow type="math_number">
@@ -220,14 +220,11 @@
 			            <field name="NUM">1</field>
 			          </shadow>
 			        </value>
-			      </block>
+			      </block> -->
 			    <!-- <block type="controls_forEach"></block> -->
 			    <!-- <block type="controls_flow_statements"></block> -->
-			</category>
-			<category name="TEXTO">
-				<block type="text"></block>										
-			</category>
-			<category name="MATEMATICAS">
+			<!-- </category> -->
+			<category name="NÚMEROS">
 				<block type="math_number"></block>	
 				<block type="math_arithmetic">
 			        <value name="A">
@@ -256,15 +253,28 @@
 			        </value>
 			    </block>  
 			</category>
-			<category name="DEBUG">
-				<block type="text_print"></block>
-			</category>
+			
 			<category name="SWITCHES">
-				<block type="yinn_light_switch"></block>	
+				<block type="yinn_light_switch"></block>
+				<block type="yinn_connect_switch"></block>				
 			</category>
-			<category name="SENSORES">
+			<category name="SENSORES INTERNOS">
 				<block type="yinn_sense_temp"></block>
-				<block type="yinn_sense_lum"></block>				
+				<block type="yinn_sense_lum"></block>
+				<block type="yinn_sense_hum"></block>
+				<block type="yinn_sense_mov"></block>			
+			</category>
+			<category name="SENSORES EXTERNOS">
+				<block type="yinn_weather_temp"></block>
+				<block type="yinn_weather_hum"></block>
+				<block type="yinn_weather_lum"></block>
+				<block type="yinn_weather_mov"></block>
+				<block type="yinn_weather_lluv"></block>			
+			</category>
+
+			<category name="DEBUG" v-if="debug">
+				<block type="text_print"></block>
+				<block type="text"></block>	
 			</category>
 		</xml>
 	</span>
@@ -286,6 +296,7 @@ import firebase from '~/utils/firebase/firebase.js';
 		},
 		data () {
 	    	return {
+	    		debug: true,
 	    		eliminar_dialog: false,
 	    		guardaryactivar_dialog: false,
 	    		salir_dialog: false,
@@ -329,8 +340,6 @@ import firebase from '~/utils/firebase/firebase.js';
 		      		{ type: 'text/javascript', src: '/scripts/blockly/blocks/colour.js'},
 		      		{ type: 'text/javascript', src: '/scripts/blockly/blocks/variables.js'},
 		      		{ type: 'text/javascript', src: '/scripts/blockly/blocks/procedures.js'},
-
-
 
 		      		{ type: 'text/javascript', src: '/scripts/blockly/msg/js/es.js'},
 		    	],
@@ -412,6 +421,7 @@ import firebase from '~/utils/firebase/firebase.js';
 
 			let me = this; 
 
+
 			firebase.database().ref('dispositivos/cliente-1/rutinas').child(this.idrutina).on('value', function(snapshot) {
 			  me.rutina = snapshot.val();
 			});
@@ -431,6 +441,8 @@ import firebase from '~/utils/firebase/firebase.js';
 	        scrollbars: true,
 	        trashcan: true,
 	        });
+
+	        
 
 			setTimeout(function(){
 				var xml = Blockly.Xml.textToDom(me.rutina.blocks_xml);

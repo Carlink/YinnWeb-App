@@ -46,11 +46,20 @@ Blockly.JavaScript['variables_set'] = function(block) {
 };
 
 Blockly.JavaScript['yinn_light_switch'] = function(block) {
-  var dropdown_switch = block.getFieldValue('switch');
+  let dropdown_switch = block.getFieldValue('switch');
   // TODO: Assemble JavaScript into code variable.
   var code = 'yinnlightswitch(' + dropdown_switch + ')';
   return code;
 };
+
+Blockly.JavaScript['yinn_connect_switch'] = function(block) {
+  let dropdown_switch = block.getFieldValue('switch');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'yinnconnectswitch(' + dropdown_switch + ')';
+  return code;
+};
+
+// Yinn Sense
 
 Blockly.JavaScript['yinn_sense_temp'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
@@ -64,5 +73,56 @@ Blockly.JavaScript['yinn_sense_lum'] = function(block) {
   // var code = 'temperaturaInterna';
   // TODO: Change ORDER_NONE to the correct strength.
   return ['luminosidadInterna'];
+};
+
+Blockly.JavaScript['yinn_sense_hum'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['humedadInterna'];
+};
+
+Blockly.JavaScript['yinn_sense_mov'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['movimientoInterno'];
+};
+
+// Yinn Weather
+
+Blockly.JavaScript['yinn_weather_temp'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['temperaturaExterna'];
+};
+
+Blockly.JavaScript['yinn_weather_hum'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['humedadExterna'];
+};
+
+Blockly.JavaScript['yinn_weather_lum'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['luminosidadExterna'];
+};
+
+Blockly.JavaScript['yinn_weather_mov'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['movimientoExterna'];
+};
+
+Blockly.JavaScript['yinn_weather_lluv'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  // var code = 'temperaturaInterna';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return ['lluviaExterna'];
 };
 
