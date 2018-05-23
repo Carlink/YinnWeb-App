@@ -17,7 +17,7 @@
 			
 		//Splash Screen Delay
 		setTimeout(function() {
-	        window.location.replace("/login");
+	        window.location.replace("/dashboard");
 	    }, 4000);
 		}
 	};

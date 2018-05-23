@@ -126,3 +126,19 @@ Blockly.JavaScript['yinn_weather_lluv'] = function(block) {
   return ['lluviaExterna'];
 };
 
+Blockly.JavaScript['activador_tiempo'] = function(block) {
+  var number_hora = block.getFieldValue('hora');
+  var number_minuto = block.getFieldValue('minuto');
+  var checkbox_lu = block.getFieldValue('lu') == 'TRUE';
+  var checkbox_ma = block.getFieldValue('ma') == 'TRUE';
+  var checkbox_mi = block.getFieldValue('mi') == 'TRUE';
+  var checkbox_ju = block.getFieldValue('ju') == 'TRUE';
+  var checkbox_vi = block.getFieldValue('vi') == 'TRUE';
+  var checkbox_sa = block.getFieldValue('sa') == 'TRUE';
+  var checkbox_do = block.getFieldValue('do') == 'TRUE';
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'crearCron(' + number_minuto + ',' + number_hora + ',' + checkbox_lu + ',' + checkbox_ma + ',' + checkbox_mi + ',' + checkbox_ju + ',' + checkbox_vi + ',' + checkbox_sa + ',' + checkbox_do + ')';
+  return code;
+};
+

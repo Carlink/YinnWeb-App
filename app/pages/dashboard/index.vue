@@ -20,10 +20,10 @@
 				style="height: 72vh;"
 			>      			
       		</lista>
-      		<dispositivos
+      		<!-- <dispositivos
       			v-show="vista=='devices'"
 				style="overflow: scroll; height: 72vh;"
-      		></dispositivos>
+      		></dispositivos> -->
       		
 
 			<v-bottom-nav absolute :shift="true" :value="true" :active.sync="vista" color="transparent">
@@ -35,10 +35,10 @@
 		        <span>RUTINAS</span>
 		        <v-icon>directions</v-icon>
 		      </v-btn>
-		      <v-btn flat color="amber" value="devices">
+		      <!-- <v-btn flat color="amber" value="devices">
 		        <span>DISPOSITIVOS</span>
 		        <v-icon>device_hub</v-icon>
-		      </v-btn>
+		      </v-btn> -->
 		      <!-- <v-btn flat color="amber" value="seetings">
 		        <span>AJUSTES</span>
 		        <v-icon>settings</v-icon>

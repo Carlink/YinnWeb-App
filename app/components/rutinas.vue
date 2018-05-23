@@ -253,7 +253,9 @@
 			        </value>
 			    </block>  
 			</category>
-			
+			<category name="TIEMPO">
+				<block type="activador_tiempo"></block>				
+			</category>			
 			<category name="SWITCHES">
 				<block type="yinn_light_switch"></block>
 				<block type="yinn_connect_switch"></block>				

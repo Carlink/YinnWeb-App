@@ -206,6 +206,77 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "",
     "helpUrl": ""
   },
+  {
+    "type": "activador_tiempo",
+    "message0": "Activar a las %1 : %2 hrs %3 Lu %4 Ma %5 Mi %6 Ju %7 Vi %8 Sa %9 Do %10 %11 %12",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "hora",
+        "value": 0,
+        "min": 0,
+        "max": 24
+      },
+      {
+        "type": "field_number",
+        "name": "minuto",
+        "value": 0,
+        "min": 0,
+        "max": 60
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_checkbox",
+        "name": "lu",
+        "checked": true
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ma",
+        "checked": true
+      },
+      {
+        "type": "field_checkbox",
+        "name": "mi",
+        "checked": true
+      },
+      {
+        "type": "field_checkbox",
+        "name": "ju",
+        "checked": true
+      },
+      {
+        "type": "field_checkbox",
+        "name": "vi",
+        "checked": true
+      },
+      {
+        "type": "field_checkbox",
+        "name": "sa",
+        "checked": true
+      },
+      {
+        "type": "field_checkbox",
+        "name": "do",
+        "checked": true
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "NAME"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  }
+
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 
 /**
