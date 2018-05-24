@@ -72,6 +72,15 @@
 		      >
 		        <v-icon>delete</v-icon>
 		      </v-btn>
+		      <v-btn
+		        fab
+		        dark
+		        small
+		        color="green accent-3"
+		        @click="codigoenpantalla = true; codigoMostrar();"
+		      >
+		        <v-icon>code</v-icon>
+		      </v-btn>
         </v-speed-dial>
 
 		<v-snackbar
@@ -180,6 +189,23 @@
 	          	</v-btn>
 	          	<v-btn color="error" dark raised @click="eliminarRutina()">
 	          	Si
+	          	</v-btn>
+	        </v-card-actions>
+	        </v-card>
+	    </v-dialog>
+
+	    <v-dialog v-model="codigoenpantalla" max-width="500px">
+	        <v-card>
+	          	<v-card-title class="title">
+	            	Codigo Previo
+	          	</v-card-title>
+	          	<v-card-text>
+		            {{codigoPrevio}}
+	          	</v-card-text>
+	        <v-card-actions>
+	        	<v-spacer></v-spacer>
+	        	<v-btn color="primary" dark raised @click="codigoenpantalla = false">
+	          	cerrar
 	          	</v-btn>
 	        </v-card-actions>
 	        </v-card>
@@ -298,6 +324,8 @@ import firebase from '~/utils/firebase/firebase.js';
 		},
 		data () {
 	    	return {
+	    		codigoenpantalla: false,
+	    		codigoPrevio: '',
 	    		debug: true,
 	    		eliminar_dialog: false,
 	    		guardaryactivar_dialog: false,
@@ -348,6 +376,10 @@ import firebase from '~/utils/firebase/firebase.js';
 		    }
 		},
 		methods: {
+			codigoMostrar(){
+				Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      			this.codigoPrevio = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
+			},
 			eliminarRutina(){
 
 				console.log(this.key);
@@ -449,7 +481,7 @@ import firebase from '~/utils/firebase/firebase.js';
 			setTimeout(function(){
 				var xml = Blockly.Xml.textToDom(me.rutina.blocks_xml);
 				Blockly.Xml.domToWorkspace(xml, me.workspacePlayground);
-			},1500);
+			},3000);
 			
 			
 

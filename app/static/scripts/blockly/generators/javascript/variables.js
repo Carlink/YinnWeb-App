@@ -138,7 +138,7 @@ Blockly.JavaScript['activador_tiempo'] = function(block) {
   var checkbox_do = block.getFieldValue('do') == 'TRUE';
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'crearCron(' + number_minuto + ',' + number_hora + ',' + checkbox_lu + ',' + checkbox_ma + ',' + checkbox_mi + ',' + checkbox_ju + ',' + checkbox_vi + ',' + checkbox_sa + ',' + checkbox_do + ')';
+  var code = 'crearCron(' + number_minuto + ',' + number_hora + ',' + checkbox_lu + ',' + checkbox_ma + ',' + checkbox_mi + ',' + checkbox_ju + ',' + checkbox_vi + ',' + checkbox_sa + ',' + checkbox_do + ',"' + statements_name + '")';
   return code;
 };
 
