@@ -2,10 +2,10 @@
 	<span class="grey lighten-2">
 		<v-list subheader>
           <v-subheader class="grey lighten-2">ACTIVABLES</v-subheader>
-          	<v-list-tile class="white" v-if="!activadores[0].visible && !activadores[1].visible">
+          	<v-list-tile class="white" v-if="!activadores[0].visible && !activadores[1].visible && !debug">
           		Sin Dispositivos Activables Conectados
           	</v-list-tile>
-            <span class="white" v-for="item in activadores" v-if="item.visible">
+            <span class="white" v-for="item in activadores" v-if="item.visible || debug">
 				<v-divider></v-divider>
 				
 	            <v-list-tile class="white" avatar v-bind:key="item.title" @click="activadores_metodo(item)">
@@ -31,10 +31,10 @@
 			</span>
 			
 			<v-subheader class="grey lighten-2">SENSORES INTERNOS</v-subheader>
-			<v-list-tile v-if="!dispositivos_activos[0].activo">
+			<v-list-tile v-if="!dispositivos_activos[0].activo && !debug">
 				Sin Sensores Internos Conectados
 			</v-list-tile>
-			<span v-if="dispositivos_activos[0].activo">
+			<span v-if="dispositivos_activos[0].activo || debug">
             
 			
 			<span v-for="item in sensores_internos">
@@ -55,10 +55,10 @@
 			</span>
 			
 			<v-subheader class="grey lighten-2" >SENSORES DE EXTERIOR</v-subheader>
-			<v-list-tile v-if="!dispositivos_activos[1].activo">
+			<v-list-tile v-if="!dispositivos_activos[1].activo && !debug">
 				Sin Sensores de Exterior Conectados
 			</v-list-tile>
-			<span v-if="dispositivos_activos[1].activo">
+			<span v-if="dispositivos_activos[1].activo || debug">
 			
 			<span v-for="item in sensores_externos" >
 				<v-divider></v-divider>
@@ -87,6 +87,7 @@ import firebase from '~/utils/firebase/firebase.js';
 	export default {
     data () {
 	    return {
+	      debug: true,
 	      activadores: [
 	        { title: 'Ventilador', dispositivo: 'Lámpara', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null, visible: false},
 	        { title: 'Bombilla', dispositivo: 'Switch', icon: 'iconos/dispositivos/switch_on.svg', alt: 'iconos/dispositivos/switch_off.svg' , value: null, visible: false}
@@ -95,13 +96,14 @@ import firebase from '~/utils/firebase/firebase.js';
 	        { title: 'Temperatura', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: ' °C'},
 	        { title: 'Humedad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/humedad.svg' , value: null, unidad: '%'},
 	        { title: 'Luminicidad', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: 'lm'},
-	        { title: 'Movimiento', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: ''}
+	        { title: 'Movimiento', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/movimiento.svg' , value: null, unidad: ''}
 	        
 	      ],
 	      sensores_externos: [
-	        { title: 'Temperatura Externa', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/temperatura_externa.svg' , value: null, unidad: ' °C'},
-	        { title: 'Luminocidad Externa', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: ' lm'},
-	        { title: 'Movimiento', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/bombillo.svg' , value: null},
+	        { title: 'Temperatura', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: ' °C'},
+	        { title: 'Humedad', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/humedad.svg' , value: null, unidad: '%'},
+	        { title: 'Luminocidad', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/luminisidad.svg' , value: null, unidad: ' lm'},
+	        { title: 'Movimiento', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/movimiento.svg' , value: null},
 	        { title: 'Lluvia', dispositivo: 'Yinn Weather', icon: 'iconos/dispositivos/lluvia.svg' , value: null},
 	      ],
 	      dispositivos_activos: [
@@ -130,9 +132,10 @@ import firebase from '~/utils/firebase/firebase.js';
 	  	firebase.database().ref('dispositivos/cliente-1/sensores_externos').on('value', (snapshot)=>{
 	  		let c = snapshot.exportVal();
 	  		me.sensores_externos[0].value = c.temperatura;
-	  		me.sensores_externos[1].value = c.luminosidad;
-	  		me.sensores_externos[2].value = c.movimiento;
-	  		me.sensores_externos[3].value = c.lluvia;
+	  		me.sensores_externos[1].value = c.humedad;
+	  		me.sensores_externos[2].value = c.luminosidad;
+	  		me.sensores_externos[3].value = (c.movimiento == 0 ? 'Sin movimiento' : 'Hay movimiento!!');
+	  		me.sensores_externos[4].value = c.lluvia;
 	  	});
 
 	  	firebase.database().ref('dispositivos/cliente-1/dispositivos_activos').on('value', (snapshot)=>{

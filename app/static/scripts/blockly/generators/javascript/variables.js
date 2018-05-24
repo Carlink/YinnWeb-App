@@ -126,6 +126,8 @@ Blockly.JavaScript['yinn_weather_lluv'] = function(block) {
   return ['lluviaExterna'];
 };
 
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#mtbhpu
 Blockly.JavaScript['activador_tiempo'] = function(block) {
   var number_hora = block.getFieldValue('hora');
   var number_minuto = block.getFieldValue('minuto');

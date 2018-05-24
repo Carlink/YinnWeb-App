@@ -252,7 +252,7 @@
 			<!-- </category> -->
 			<category name="NÚMEROS">
 				<block type="math_number"></block>	
-				<block type="math_arithmetic">
+				<!-- <block type="math_arithmetic">
 			        <value name="A">
 			          <shadow type="math_number">
 			            <field name="NUM">1</field>
@@ -263,14 +263,14 @@
 			            <field name="NUM">1</field>
 			          </shadow>
 			        </value>
-			    </block>
-      			<block type="math_number_property">
+			    </block> -->
+      			<!-- <block type="math_number_property">
 			        <value name="NUMBER_TO_CHECK">
 			          <shadow type="math_number">
 			            <field name="NUM">0</field>
 			          </shadow>
 			        </value>
-			    </block>
+			    </block> -->
 			    <block type="math_round">
 			        <value name="NUM">
 			          <shadow type="math_number">
