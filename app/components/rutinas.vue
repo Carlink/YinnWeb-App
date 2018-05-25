@@ -481,7 +481,7 @@ import firebase from '~/utils/firebase/firebase.js';
 			setTimeout(function(){
 				var xml = Blockly.Xml.textToDom(me.rutina.blocks_xml);
 				Blockly.Xml.domToWorkspace(xml, me.workspacePlayground);
-			},3000);
+			},5000);
 			
 			
 

@@ -48,14 +48,14 @@ Blockly.JavaScript['variables_set'] = function(block) {
 Blockly.JavaScript['yinn_light_switch'] = function(block) {
   let dropdown_switch = block.getFieldValue('switch');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'yinnlightswitch(' + dropdown_switch + ')';
+  var code = 'yinnlightswitch(' + dropdown_switch + ');';
   return code;
 };
 
 Blockly.JavaScript['yinn_connect_switch'] = function(block) {
   let dropdown_switch = block.getFieldValue('switch');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'yinnconnectswitch(' + dropdown_switch + ')';
+  var code = 'yinnconnectswitch(' + dropdown_switch + ');';
   return code;
 };
 
@@ -140,7 +140,32 @@ Blockly.JavaScript['activador_tiempo'] = function(block) {
   var checkbox_do = block.getFieldValue('do') == 'TRUE';
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'crearCron(' + number_minuto + ',' + number_hora + ',' + checkbox_lu + ',' + checkbox_ma + ',' + checkbox_mi + ',' + checkbox_ju + ',' + checkbox_vi + ',' + checkbox_sa + ',' + checkbox_do + ',"' + statements_name + '")';
+  var code = 'crearCron(' 
+              + number_minuto 
+              + ',' 
+              + number_hora 
+              + ',' 
+              + checkbox_lu 
+              + ',' 
+              + checkbox_ma 
+              + ',' 
+              + checkbox_mi 
+              + ',' 
+              + checkbox_ju 
+              + ',' 
+              + checkbox_vi 
+              + ',' 
+              + checkbox_sa 
+              + ',' 
+              + checkbox_do 
+              + ',' 
+              + '\''
+              + statements_name.replace(/\n/g, ' ')
+              + '\''
+              + ');'
+
+
+  console.log(code);
   return code;
 };
 
