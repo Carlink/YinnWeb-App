@@ -87,10 +87,10 @@ import firebase from '~/utils/firebase/firebase.js';
 	export default {
     data () {
 	    return {
-	      debug: true,
+	      debug: false,
 	      activadores: [
-	        { title: 'Ventilador', dispositivo: 'Lámpara', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null, visible: false},
-	        { title: 'Bombilla', dispositivo: 'Switch', icon: 'iconos/dispositivos/switch_on.svg', alt: 'iconos/dispositivos/switch_off.svg' , value: null, visible: false}
+	        { title: 'Bombilla', dispositivo: 'Lámpara', icon: 'iconos/dispositivos/bombillo_on.svg', alt: 'iconos/dispositivos/bombillo_off.svg' , value: null, visible: false},
+	        { title: 'Ventilador', dispositivo: 'Switch', icon: 'iconos/dispositivos/switch_on.svg', alt: 'iconos/dispositivos/switch_off.svg' , value: null, visible: false}
 	      ],
 	      sensores_internos: [	        
 	        { title: 'Temperatura', dispositivo: 'Yinn Sense', icon: 'iconos/dispositivos/temperatura_interna.svg' , value: null, unidad: ' °C'},
@@ -117,8 +117,9 @@ import firebase from '~/utils/firebase/firebase.js';
 
 	  	firebase.database().ref('dispositivos/cliente-1/actuadores').on('value', (snapshot)=>{
 	  		let c = snapshot.exportVal();
-	  		me.activadores[0].value = c.ventilador;
-	  		me.activadores[1].value = c.bombilla;
+	  		me.activadores[0].value = c.bombilla;
+	  		me.activadores[1].value = c.ventilador;
+	  		
 	  	});
 
 	  	firebase.database().ref('dispositivos/cliente-1/sensores_internos').on('value', (snapshot)=>{
@@ -140,8 +141,9 @@ import firebase from '~/utils/firebase/firebase.js';
 
 	  	firebase.database().ref('dispositivos/cliente-1/dispositivos_activos').on('value', (snapshot)=>{
 	  		let c = snapshot.exportVal();
-	  		me.activadores[0].visible = c.YinnConnect;
-	  		me.activadores[1].visible = c.YinnLight;
+	  		me.activadores[0].visible = c.YinnLight;
+	  		me.activadores[1].visible = c.YinnConnect;
+	  		
 	  		me.dispositivos_activos[0].activo = c.YinnSense;
 	  		me.dispositivos_activos[1].activo = c.YinnWeather;
 	  	});
