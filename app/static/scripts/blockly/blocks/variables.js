@@ -275,6 +275,45 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "timer_durante",
+    "message0": "Hacer dentro de %1 %2 %3 %4",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "tiempo",
+        "value": 0,
+        "min": 0,
+        "max": 1000
+      },
+      {
+        "type": "field_dropdown",
+        "name": "medida",
+        "options": [
+          [
+            "minutos",
+            "1"
+          ],
+          [
+            "horas",
+            "2"
+          ]
+        ]
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "codigo"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
 
 ]);  // END JSON EXTRACT (Do not delete this comment.)

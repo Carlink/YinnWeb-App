@@ -160,12 +160,40 @@ Blockly.JavaScript['activador_tiempo'] = function(block) {
               + checkbox_do 
               + ',' 
               + '\''
-              + statements_name.replace(/\n/g, ' ')
+              + statements_name
               + '\''
-              + ');'
+              + ');';
 
 
   console.log(code);
   return code;
 };
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#n5j346
+Blockly.JavaScript['timer_durante'] = function(block) {
+  var number_tiempo = block.getFieldValue('tiempo');
+  var dropdown_medida = block.getFieldValue('medida');
+  var statements_codigo = Blockly.JavaScript.statementToCode(block, 'codigo');
+
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'hacerDentroDe('
+              + number_tiempo 
+              + ','
+              + dropdown_medida
+              + ',' 
+              + '\"'
+              + statements_codigo
+              + '\"'
+              + ');';
+  return code;
+};
+
+
+
+
+
+
+
+
+
 

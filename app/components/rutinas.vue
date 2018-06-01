@@ -280,7 +280,8 @@
 			    </block>  
 			</category>
 			<category name="TIEMPO">
-				<block type="activador_tiempo"></block>				
+				<block type="activador_tiempo"></block>
+				<block type="timer_durante"></block>							
 			</category>			
 			<category name="SWITCHES">
 				<block type="yinn_light_switch"></block>
@@ -379,6 +380,7 @@ import firebase from '~/utils/firebase/firebase.js';
 			codigoMostrar(){
 				Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       			this.codigoPrevio = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
+      			console.log(this.codigoPrevio)
 			},
 			eliminarRutina(){
 
@@ -434,12 +436,12 @@ import firebase from '~/utils/firebase/firebase.js';
 				Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       			var code = Blockly.JavaScript.workspaceToCode(this.workspacePlayground);
 
-				alert(code);
+				//alert(code);
 				
 				let obj = {
 					nuevo: true,
 					activo: true,
-					code: code
+					code: code.replace(/\n/g, ' ')
 				}
 
 				firebase.database().ref('dispositivos/cliente-1/rutinas').push(obj);
