@@ -51,7 +51,7 @@
 		"generate": "nuxt generate",
 		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
 		"precommit": "npm run lint",
-		"deploy": "gcloud app deploy app.yaml --project Yinn --version produccion",
+		"deploy": "gcloud app deploy app.yaml --project yinn-7dbd2 --version produccion",
 		"deploy-test": "gcloud app deploy app.yaml --project Yinn --no-promote --version prueb2"
 	},
 	"devDependencies": {
